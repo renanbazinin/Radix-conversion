@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link ,useNavigate, Switch,useParams } from "react-router-dom"
+
 
 import Base2To10 from './pages/Base2To10'
 import Sample from './pages/Sample'
