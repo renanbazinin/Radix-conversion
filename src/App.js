@@ -17,7 +17,7 @@ function App() {
     toBase: '10',
     convertedNumber: 'NaN',
   });
-
+  document.title = 'Renan Radix';
     const swapBases = () => {
       // Swap the values of fromBase and toBase
       setTheGame((prevState) => ({
@@ -116,6 +116,7 @@ const handleNumberChange = (event) => {
 
   return (
     <div className="App">
+   
       <h1>Radix</h1>
       number: <input type="text" onChange={handleNumberChange} value={theGame.number} />
 
