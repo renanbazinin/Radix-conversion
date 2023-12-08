@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "Radix-conversion",
   "homepage": "https://renanbazinin.github.io/Radix-conversion/",
   "version": "0.1.0",
   "private": true,
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    
+
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
 
