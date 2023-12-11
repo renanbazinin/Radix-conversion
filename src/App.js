@@ -12,9 +12,12 @@ import Sample from './pages/Sample'
 
 function App() {
 
+  useEffect(() => {
+    toggleDarkMode();
+  }, []);
 
   
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
 
 
