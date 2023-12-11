@@ -149,7 +149,8 @@ const handleNumberChange = (event) => {
       <button onClick={swapBases}>Swap Bases</button>
       <br/>
       <div>
-        <h3>Converted Number: ( {theGame.convertedNumber} )<sub>{theGame.toBase}</sub>  </h3>
+      <h3>Input Number: ( {theGame.number} )<sub>{theGame.fromBase}</sub>  </h3>
+      <h3>Converted Number: ( {theGame.convertedNumber} )<sub>{theGame.toBase}</sub>  </h3>
       </div>
   {/* Dark mode/light mode toggle button */}
       <button onClick={toggleDarkMode}>
