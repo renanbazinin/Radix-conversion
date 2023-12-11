@@ -12,13 +12,14 @@ import Sample from './pages/Sample'
 
 function App() {
 
-  useEffect(() => {
-    toggleDarkMode();
-  }, []);
+
 
   
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  useEffect(() => {
+    setIsDarkMode(false);
+    toggleDarkMode();
+  }, []);
 
 
   const [theGame, setTheGame] = useState({
