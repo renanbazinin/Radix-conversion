@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Radix-conversion/static/css/main.9facfb7d.css",
-    "main.js": "/Radix-conversion/static/js/main.a250cbe4.js",
+    "main.js": "/Radix-conversion/static/js/main.b2f4e5fd.js",
     "static/js/787.65e0a5b4.chunk.js": "/Radix-conversion/static/js/787.65e0a5b4.chunk.js",
     "static/media/logo.svg": "/Radix-conversion/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Radix-conversion/index.html",
     "main.9facfb7d.css.map": "/Radix-conversion/static/css/main.9facfb7d.css.map",
-    "main.a250cbe4.js.map": "/Radix-conversion/static/js/main.a250cbe4.js.map",
+    "main.b2f4e5fd.js.map": "/Radix-conversion/static/js/main.b2f4e5fd.js.map",
     "787.65e0a5b4.chunk.js.map": "/Radix-conversion/static/js/787.65e0a5b4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9facfb7d.css",
-    "static/js/main.a250cbe4.js"
+    "static/js/main.b2f4e5fd.js"
   ]
 }
