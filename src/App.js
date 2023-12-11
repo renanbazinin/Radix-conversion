@@ -148,15 +148,17 @@ const handleNumberChange = (event) => {
       <br />
       <button onClick={swapBases}>Swap Bases</button>
       <br/>
-      <div>
-      <h3>Input Number: ( {theGame.number} )<sub>{theGame.fromBase}</sub>  </h3>
-      <h3>Converted Number: ( {theGame.convertedNumber} )<sub>{theGame.toBase}</sub>  </h3>
+      <div className='result'>
+        {/* Title for the result div */}
+        <h2 className={`result-title ${isDarkMode ? 'dark-mode' : ''}`}>Conversion Result</h2>
+        {/* Display Input Number and Converted Number */}
+        <h3>Input Number: ( {isValidNumber(theGame.number, theGame.fromBase) ? theGame.number : theGame.convertedNumber} )<sub>{theGame.fromBase}</sub>  </h3>
+        <h3>Converted Number: ( {theGame.convertedNumber} )<sub>{theGame.toBase}</sub>  </h3>
       </div>
-  {/* Dark mode/light mode toggle button */}
+      {/* Dark mode/light mode toggle button */}
       <button onClick={toggleDarkMode}>
         {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       </button>
-      
     </div>
   );
 }
