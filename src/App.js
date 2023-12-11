@@ -11,9 +11,16 @@ import Sample from './pages/Sample'
 
 
 function App() {
+
+
+  
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+
+
   const [theGame, setTheGame] = useState({
-    number: '1',
-    fromBase: '',
+    number: '1101',
+    fromBase: '2',
     toBase: '10',
     convertedNumber: 'NaN',
   });
@@ -26,6 +33,16 @@ function App() {
         toBase: prevState.fromBase,
       }));
     };
+
+    const toggleDarkMode = () => {
+      setIsDarkMode((prevMode) => {
+        document.body.classList.toggle('dark-mode', !prevMode);
+        document.body.classList.toggle('light-mode', prevMode);
+        return !prevMode;
+      });
+    };
+    
+
   const convertBase = () => {
     // Convert the entered string to an array of characters
     const enteredNumber = theGame.number;
@@ -92,6 +109,7 @@ function App() {
     return true;
   };
 
+  console.log('Rendering with isDarkMode:', isDarkMode);
 
 const handleNumberChange = (event) => {
 
@@ -128,8 +146,13 @@ const handleNumberChange = (event) => {
       <button onClick={swapBases}>Swap Bases</button>
       <br/>
       <div>
-        <h3>Converted Number: {theGame.convertedNumber}</h3>
+        <h3>Converted Number: ( {theGame.convertedNumber} )<sub>{theGame.toBase}</sub>  </h3>
       </div>
+  {/* Dark mode/light mode toggle button */}
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      </button>
+      
     </div>
   );
 }
