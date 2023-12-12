@@ -213,7 +213,7 @@ const handleCustomFromBaseChange = (event) => {
       {/* Input for custom "From Base" */}
       {theGame.fromBase === 'custom' && (
         <input
-          type="text"
+          type="number"
           placeholder="Enter custom base"
           onChange={handleCustomFromBaseChange}
           value={theGame.customFromBase}
@@ -235,7 +235,7 @@ const handleCustomFromBaseChange = (event) => {
       {/* Input for custom "To Base" */}
       {theGame.toBase === 'custom' && (
         <input
-          type="text"
+          type="number"
           placeholder="Enter custom base"
           onChange={handleCustomToBaseChange}
           value={theGame.customToBase}
