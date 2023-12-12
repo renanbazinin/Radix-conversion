@@ -30,14 +30,37 @@ function App() {
     isValidNumber: true,
   });
   document.title = 'Renan Radix';
-    const swapBases = () => {
-      // Swap the values of fromBase and toBase
+  const swapBases = () => {
+    const inputBase = parseInt(theGame.fromBase);
+    const outputBase = parseInt(theGame.toBase);
+
+    // Check if the conversion of the current input number to the future output base is valid
+    const isInputToOutputValid =isValidNumber(theGame.number.split(''), inputBase);
+
+    // Check if the conversion of the current converted number to the future from base is valid
+    const isConvertedToInputValid = isValidNumber(theGame.convertedNumber.split(''), outputBase);
+    console.log("isInputToOutputValid"+isInputToOutputValid)
+    console.log("isConvertedToInputValid:"+isConvertedToInputValid)
+
+
+    if ((isInputToOutputValid && isConvertedToInputValid))
+    setTheGame((prevState) => ({
+      ...prevState,
+      fromBase: prevState.toBase,
+      toBase: prevState.fromBase,
+      number: prevState.convertedNumber,
+      convertedNumber: prevState.number,
+    }));
+
+    // Swap only the bases if both conversions are not valid
+    else{
       setTheGame((prevState) => ({
         ...prevState,
         fromBase: prevState.toBase,
         toBase: prevState.fromBase,
       }));
-    };
+    } 
+  };
 
     const toggleDarkMode = () => {
       setIsDarkMode((prevMode) => {
@@ -130,6 +153,17 @@ const handleNumberChange = (event) => {
 };
 
 
+const handleCustomFromBaseChange = (event) => {
+  const customValue = event.target.value;
+  const isValid = isValidNumber(theGame.number, customValue);
+
+  setTheGame((prevState) => ({
+    ...prevState,
+    fromBase: customValue,
+    isValidNumber: isValid,
+  }));
+};
+
   const handleFromBaseChange = (event) => {
    
     const newFromBase = event.target.value;
@@ -147,6 +181,13 @@ const handleNumberChange = (event) => {
       setTheGame((prevState) => ({ ...prevState, toBase: event.target.value }));
   };
 
+
+  const handleCustomToBaseChange = (event) => {
+    const customValue = event.target.value;
+    setTheGame((prevState) => ({ ...prevState, toBase: customValue }));
+  };
+
+
   useEffect(() => {
     convertBase();
   }, [theGame.number, theGame.fromBase, theGame.toBase]);
@@ -158,9 +199,50 @@ const handleNumberChange = (event) => {
       number: <input type="text"   className={theGame.isValidNumber ? '' : 'invalid'} onChange={handleNumberChange} value={theGame.number} />
 
   
-      From Base: <input type="number" min='2' onChange={handleFromBaseChange} value={theGame.fromBase} />
+      From Base:
+      <select onChange={handleFromBaseChange} value={theGame.fromBase}>
+        {/* Options for bases, you can customize these as needed */}
+        <option value="2"> 2-Binary</option>
+        <option value="8"> 8-Octal</option>
+        <option value="10">10-Decimal</option>
+        <option value="16">16-Hexadecimal</option>
+        {/* An option for custom input */}
+        <option value="custom">Custom</option>
+      </select>
+
+      {/* Input for custom "From Base" */}
+      {theGame.fromBase === 'custom' && (
+        <input
+          type="text"
+          placeholder="Enter custom base"
+          onChange={handleCustomFromBaseChange}
+          value={theGame.customFromBase}
+        />
+      )}
  
-      To Base: <input type="number" min ='2' onChange={handleToBaseChange} value={theGame.toBase} />
+    
+      To Base:
+      <select onChange={handleToBaseChange} value={theGame.toBase}>
+        {/* Options for bases, you can customize these as needed */}
+        <option value="2">2-Binary</option>
+        <option value="8">8-Octal</option>
+        <option value="10">10-Decimal</option>
+        <option value="16">16-Hexadecimal</option>
+        {/* An option for custom input */}
+        <option value="custom">Custom</option>
+      </select>
+
+      {/* Input for custom "To Base" */}
+      {theGame.toBase === 'custom' && (
+        <input
+          type="text"
+          placeholder="Enter custom base"
+          onChange={handleCustomToBaseChange}
+          value={theGame.customToBase}
+        />
+      )}
+
+      <br/>
       <button onClick={swapBases}>Swap Bases</button>
       <div className='result'>
         {/* Title for the result div */}
@@ -170,7 +252,7 @@ const handleNumberChange = (event) => {
         <h3>Converted Number: ( {theGame.convertedNumber} )<sub>{theGame.toBase}</sub>  </h3>
       </div>
       {/* Dark mode/light mode toggle button */}
-      <button onClick={toggleDarkMode}>
+      <button onClick={toggleDarkMode} className={`toggle-button ${isDarkMode ? 'dark-mode' : ''}`} >
         {isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       </button>
     </div>

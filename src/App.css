@@ -138,3 +138,20 @@ input[type="number"].invalid {
     font-size: 14px; /* Further reduce font size for very small screens */
   }
 }
+
+
+.toggle-button {
+  background-color: rgb(155, 152, 152); /* Set a background color for the button */
+  color: #fff; /* Set text color for better visibility */
+  padding: 10px 15px; /* Adjust padding for the button */
+  font-size: 14px; /* Adjust font size */
+  border: none; /* Remove border for a cleaner look */
+  cursor: pointer; /* Add a pointer cursor to indicate interactivity */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Add a smooth transition effect */
+
+  /* Dark mode styles for the button */
+  &.dark-mode {
+    background-color: #282c34; /* Set dark mode background color */
+    color: #61dafb; /* Set dark mode text color */
+  }
+}
