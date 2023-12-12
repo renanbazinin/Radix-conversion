@@ -27,6 +27,7 @@ function App() {
     fromBase: '2',
     toBase: '10',
     convertedNumber: 'NaN',
+    isValidNumber: true,
   });
   document.title = 'Renan Radix';
     const swapBases = () => {
@@ -57,6 +58,7 @@ function App() {
       setTheGame((prevState) => ({
         ...prevState,
         convertedNumber: "Input doesn't fit to base " + theGame.fromBase,
+        isValidNumber:false,
       }));
       return;
     }
@@ -68,6 +70,7 @@ function App() {
       setTheGame((prevState) => ({
         ...prevState,
         convertedNumber: "Input doesn't fit to base",
+        isValidNumber:true,
       }));
       return;
     }
@@ -116,9 +119,14 @@ function App() {
   console.log('Rendering with isDarkMode:', isDarkMode);
 
 const handleNumberChange = (event) => {
+  const newNumber = event.target.value;
+  const isValid = isValidNumber(newNumber, theGame.fromBase);
 
-
-  setTheGame((prevState) => ({ ...prevState,number:event.target.value}));
+  setTheGame((prevState) => ({
+    ...prevState,
+    number: newNumber,
+    isValidNumber: isValid,
+  }));
 };
 
 
@@ -140,15 +148,13 @@ const handleNumberChange = (event) => {
     <div className="App">
    
       <h1>Radix</h1>
-      number: <input type="text" onChange={handleNumberChange} value={theGame.number} />
+      number: <input type="text"   className={theGame.isValidNumber ? '' : 'invalid'} onChange={handleNumberChange} value={theGame.number} />
 
-      <br />
+  
       From Base: <input type="number" min='2' onChange={handleFromBaseChange} value={theGame.fromBase} />
-      <br />
+ 
       To Base: <input type="number" min ='2' onChange={handleToBaseChange} value={theGame.toBase} />
-      <br />
       <button onClick={swapBases}>Swap Bases</button>
-      <br/>
       <div className='result'>
         {/* Title for the result div */}
         <h2 className={`result-title ${isDarkMode ? 'dark-mode' : ''}`}>Conversion Result</h2>
