@@ -232,7 +232,7 @@ function App() {
       {isFromBaseCustom && (
         <input
           type="number"
-          placeholder="Enter custom base"
+          placeholder="Base"
           onChange={handleCustomFromBaseChange}
           value={theGame.customFromBase}
         />
@@ -253,7 +253,7 @@ function App() {
       {isToBaseCustom && (
         <input
           type="number"
-          placeholder="Enter custom base"
+          placeholder="Base"
           onChange={handleCustomToBaseChange}
           value={theGame.customToBase}
         />
