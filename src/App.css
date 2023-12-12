@@ -101,7 +101,25 @@ input[type="number"].invalid {
 @media (max-width: 600px) {
   input[type="text"] {
     font-size: 16px; /* Adjust font size for smaller screens */
-    width: 30px; /* Adjust width for smaller screens */
+    width: 100%; /* Make the text input wider for phone resolutions */
+  }
+
+  input[type="number"] {
+    width: 100%; /* Adjust the width of the number input for consistency */
+  }
+
+  .App {
+    font-size: 16px; /* Adjust font size for smaller screens */
+  }
+
+  .result {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .App {
+    font-size: 14px; /* Further reduce font size for very small screens */
   }
 }
 
