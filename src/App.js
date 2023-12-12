@@ -131,8 +131,15 @@ const handleNumberChange = (event) => {
 
 
   const handleFromBaseChange = (event) => {
+   
+    const newFromBase = event.target.value;
+    const isValid = isValidNumber(theGame.number, newFromBase);
  
-      setTheGame((prevState) => ({ ...prevState, fromBase: event.target.value }));
+      setTheGame((prevState) => ({
+        ...prevState,
+        fromBase: newFromBase,
+        isValidNumber: isValid,
+      }));
   };
 
   const handleToBaseChange = (event) => {
