@@ -75,7 +75,7 @@ function App() {
 
   const convertBase = () => {
     // Convert the entered string to an array of characters
-    const enteredNumber = theGame.number;
+    const enteredNumber = theGame.number.toUpperCase();
     const numberArray = enteredNumber.split('');
 
     // Check if the entered array is valid
